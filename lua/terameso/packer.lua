@@ -3,7 +3,7 @@ vim.cmd.packadd("packer.nvim")
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
+  use 'nvim-lua/plenary.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/plenary.nvim' } }
@@ -13,7 +13,12 @@ return require('packer').startup(function(use)
   use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
   use('nvim-treesitter/playground')
   use('nvim-treesitter/nvim-treesitter-context')
-  use('theprimeagen/harpoon')
+  -- harpoon v2
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { { "nvim-lua/plenary.nvim" } }
+  }
   use 'mbbill/undotree'
   use("tpope/vim-fugitive")
   use {
@@ -67,4 +72,12 @@ return require('packer').startup(function(use)
   use { 'bluz71/vim-nightfly-colors', as = 'nightfly' }
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   use("github/copilot.vim")
+  use { 'nyoom-engineering/oxocarbon.nvim' }
+  use({
+    "stevearc/oil.nvim",
+    requires = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("oil").setup()
+    end,
+  })
 end)

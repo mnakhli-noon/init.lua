@@ -8,6 +8,17 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.bo.filetype == "yaml" then
+      vim.opt.tabstop = 4
+      vim.opt.softtabstop = 4
+      vim.opt.shiftwidth = 4
+      vim.opt.expandtab = true
+    end
+  end,
+})
+
 vim.opt.smartindent = true
 
 vim.opt.wrap = true
