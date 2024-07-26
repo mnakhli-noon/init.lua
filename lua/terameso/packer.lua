@@ -72,7 +72,6 @@ return require('packer').startup(function(use)
   use { 'bluz71/vim-nightfly-colors', as = 'nightfly' }
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   use("github/copilot.vim")
-  use { 'nyoom-engineering/oxocarbon.nvim' }
   use({
     "stevearc/oil.nvim",
     requires = { "nvim-tree/nvim-web-devicons" },
@@ -80,4 +79,12 @@ return require('packer').startup(function(use)
       require("oil").setup()
     end,
   })
+  use("folke/tokyonight.nvim")
+  use("sQVe/sort.nvim")
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
 end)
