@@ -26,7 +26,8 @@ return require('packer').startup(function(use)
     branch = 'v2.x',
     requires = {
       -- LSP Support
-      { 'neovim/nvim-lspconfig' }, -- Required
+      { 'neovim/nvim-lspconfig',
+        tag = "v0.1.9" }, -- Required
       {
         -- Optional
         'williamboman/mason.nvim',
@@ -49,6 +50,7 @@ return require('packer').startup(function(use)
   use("theprimeagen/refactoring.nvim")
   use({
     "folke/trouble.nvim",
+    version = "v2.10.0",
     config = function()
       require("trouble").setup {
         icons = false,
@@ -69,8 +71,6 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
-  use { 'bluz71/vim-nightfly-colors', as = 'nightfly' }
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
   use("github/copilot.vim")
   use({
     "stevearc/oil.nvim",
@@ -79,7 +79,6 @@ return require('packer').startup(function(use)
       require("oil").setup()
     end,
   })
-  use("folke/tokyonight.nvim")
   use("sQVe/sort.nvim")
   use {
     'numToStr/Comment.nvim',
@@ -87,4 +86,5 @@ return require('packer').startup(function(use)
       require('Comment').setup()
     end
   }
+  use("projekt0n/github-nvim-theme")
 end)
