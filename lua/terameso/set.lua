@@ -33,7 +33,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
@@ -42,3 +42,13 @@ vim.opt.updatetime = 50
 -- turn on spell checking
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+
+
+-- Kickstart
+vim.g.have_nerd_font = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.timeoutlen = 300
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.cursorline = true

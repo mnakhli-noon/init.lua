@@ -51,5 +51,50 @@ return {
         end,
       }
     })
+    local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+    cmp.setup({
+      snippet = {
+        expand = function(args)
+          require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        end,
+      },
+      mapping = cmp.mapping.preset.insert({
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ["<C-Space>"] = cmp.mapping.complete(),
+      }),
+      sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' }, -- For luasnip users.
+      }, {
+        { name = 'buffer' },
+      })
+    })
+
+    vim.diagnostic.config({
+      -- update_in_insert = true,
+      virtual_text = false,
+      float = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = true,
+        header = "",
+        prefix = "",
+      },
+    })
+    -- KickStart
+    group = vim.api.nvim_create_augroup('terameso-lsp-attach', { clear = true })
+    callback = function(event)
+      local map = function(keys, func, desc, mode)
+        mode = mode or 'n'
+        vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+      end
+
+      map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+      map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+    end
   end
 }
