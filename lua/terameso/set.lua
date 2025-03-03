@@ -52,3 +52,7 @@ vim.opt.timeoutlen = 300
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.cursorline = true
+
+-- Folding
+vim.opt.foldmethod = "indent"  -- Create folds based on indentation
+vim.opt.foldlevelstart = 99    -- Start with all folds open

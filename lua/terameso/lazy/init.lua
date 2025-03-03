@@ -4,6 +4,7 @@ return {
     name = "plenary"
   },
   "sQVe/sort.nvim",
+  "github/copilot.vim",
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()

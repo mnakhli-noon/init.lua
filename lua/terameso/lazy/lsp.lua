@@ -26,7 +26,6 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls",
-        "eslint@3.0.2",
       },
       handlers = {
         function(server_name) -- default handler (optional)
@@ -96,5 +95,17 @@ return {
       map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
       map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
     end
+    require('lspconfig').typos_lsp.setup({
+      -- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
+      init_options = {
+        -- Custom config. Used together with a config file found in the workspace or its parents,
+        -- taking precedence for settings declared in both.
+        -- Equivalent to the typos `--config` cli argument.
+        config = '~/.config/nvim/typos.toml',
+        -- How typos are rendered in the editor, can be one of an Error, Warning, Info or Hint.
+        -- Defaults to error.
+        diagnosticSeverity = "Warning"
+      }
+    })
   end
 }
